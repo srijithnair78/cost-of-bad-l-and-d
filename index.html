@@ -1,108 +1,83 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Arial; color: #1a1a1a; -webkit-text-stroke: #1a1a1a}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Arial; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; min-height: 15.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Arial; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff}
-    span.s1 {font-kerning: none; background-color: #ffffff}
-    span.s2 {font-kerning: none}
-    span.s3 {text-decoration: underline ; font-kerning: none; color: #103cc0; -webkit-text-stroke: 0px #103cc0}
-  </style>
+<meta charset="UTF-8">
+<title>The Cost of Bad L&D</title>
+
+<style>
+body{
+background:#111;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:monospace;
+}
+
+canvas{
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+border-radius:4px;
+}
+</style>
+
 </head>
+
 <body>
-<p class="p1"><span class="s1">/ --- 1. THE DYNAMIC TEXTURE (Cost of Bad L&amp;D) ---</span></p>
-<p class="p1"><span class="s1">function createReceiptTexture(gl) {</span></p>
-<p class="p1"><span class="s1">const canvas = document.createElement('canvas');</span></p>
-<p class="p1"><span class="s1">canvas.width = 512; canvas.height = 1024;</span></p>
-<p class="p1"><span class="s1">const ctx = canvas.getContext('2d');</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">// Receipt Paper Look</span></p>
-<p class="p1"><span class="s1">ctx.fillStyle = '#fdfdfd';</span></p>
-<p class="p1"><span class="s1">ctx.fillRect(0, 0, canvas.width, canvas.height);</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">// Text Setup</span></p>
-<p class="p1"><span class="s1">ctx.fillStyle = '#111';</span></p>
-<p class="p1"><span class="s1">ctx.textAlign = 'center';</span></p>
-<p class="p1"><span class="s1">ctx.font = 'bold 32px monospace';</span></p>
-<p class="p1"><span class="s1">ctx.fillText('THE COST OF BAD L&amp;D', 256, 80);</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">ctx.font = '16px monospace';</span></p>
-<p class="p1"><span class="s1">ctx.textAlign = 'left';</span></p>
-<p class="p1"><span class="s1">const items = [</span></p>
-<p class="p1"><span class="s1">{ name: "Talent Disengaged", cost: "$82,000" },</span></p>
-<p class="p1"><span class="s1">{ name: "Skills Not Applied", cost: "$41,000" },</span></p>
-<p class="p1"><span class="s1">{ name: "Leadership Stalled", cost: "$36,000" },</span></p>
-<p class="p1"><span class="s1">{ name: "Wrong Learners", cost: "$29,000" }</span></p>
-<p class="p1"><span class="s1">];</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">items.forEach((item, i) =&gt; {</span></p>
-<p class="p1"><span class="s1">let y = 180 + (i * 100);</span></p>
-<p class="p1"><span class="s1">ctx.font = 'bold 20px monospace';</span></p>
-<p class="p1"><span class="s1">ctx.fillText(<a href="http://item.name/"><span class="s3">item.name</span></a>, 40, y);</span></p>
-<p class="p1"><span class="s1">ctx.textAlign = 'right';</span></p>
-<p class="p1"><span class="s1">ctx.fillText(item.cost, 470, y);</span></p>
-<p class="p1"><span class="s1">ctx.textAlign = 'left';</span></p>
-<p class="p1"><span class="s1">ctx.font = '14px monospace';</span></p>
-<p class="p1"><span class="s1">ctx.fillText("Investment without impact.", 40, y + 25);</span></p>
-<p class="p1"><span class="s1">});</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">ctx.font = 'bold 28px monospace';</span></p>
-<p class="p1"><span class="s1">ctx.fillText('TOTAL: $300,000.00', 40, 850);</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">const tex = gl.createTexture();</span></p>
-<p class="p1"><span class="s1">gl.bindTexture(gl.TEXTURE_2D, tex);</span></p>
-<p class="p1"><span class="s1">gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);</span></p>
-<p class="p1"><span class="s1">gl.generateMipmap(gl.TEXTURE_2D);</span></p>
-<p class="p1"><span class="s1">return tex;</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">// --- 2. THE PHYSICS MESH (Verlet) ---</span></p>
-<p class="p1"><span class="s1">const mouse = { x: 0, y: 0, down: false };</span></p>
-<p class="p1"><span class="s1">window.addEventListener('mousemove', e =&gt; {</span></p>
-<p class="p1"><span class="s1">mouse.x = (e.clientX / window.innerWidth) * 2 - 1;</span></p>
-<p class="p1"><span class="s1">mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;</span></p>
-<p class="p1"><span class="s1">});</span></p>
-<p class="p1"><span class="s1">window.addEventListener('mousedown', () =&gt; mouse.down = true);</span></p>
-<p class="p1"><span class="s1">window.addEventListener('mouseup', () =&gt; mouse.down = false);</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">function updatePhysics(points, constraints) {</span></p>
-<p class="p1"><span class="s1">points.forEach(p =&gt; {</span></p>
-<p class="p1"><span class="s1">if (p.pinned) return;</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">// Interaction: If mouse is near a point, pull it</span></p>
-<p class="p1"><span class="s1">if (mouse.down) {</span></p>
-<p class="p1"><span class="s1">let dx = mouse.x * 2 - p.x; // Scale mouse to mesh space</span></p>
-<p class="p1"><span class="s1">let dy = mouse.y * 2 - p.y;</span></p>
-<p class="p1"><span class="s1">let dist = Math.sqrt(dx*dx + dy*dy);</span></p>
-<p class="p1"><span class="s1">if (dist &lt; 0.5) {</span></p>
-<p class="p1"><span class="s1">p.x += dx * 0.1;</span></p>
-<p class="p1"><span class="s1">p.y += dy * 0.1;</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">let vx = (p.x - p.oldX) * 0.96;</span></p>
-<p class="p1"><span class="s1">let vy = (p.y - p.oldY) * 0.96;</span></p>
-<p class="p1"><span class="s1">p.oldX = p.x; p.oldY = p.y;</span></p>
-<p class="p1"><span class="s1">p.x += vx; p.y += vy - 0.0015; // Gravity</span></p>
-<p class="p1"><span class="s1">});</span></p>
-<p class="p2"><span class="s2"></span><br></p>
-<p class="p1"><span class="s1">// Spring satisfaction (Stiffness)</span></p>
-<p class="p1"><span class="s1">for (let i = 0; i &lt; 8; i++) {</span></p>
-<p class="p1"><span class="s1">constraints.forEach(c =&gt; {</span></p>
-<p class="p1"><span class="s1">let p1 = points[c[0]], p2 = points[c[1]];</span></p>
-<p class="p1"><span class="s1">let dx = p2.x - p1.x, dy = p2.y - p1.y;</span></p>
-<p class="p1"><span class="s1">let dist = Math.sqrt(dx*dx + dy*dy);</span></p>
-<p class="p1"><span class="s1">let diff = (c[2] - dist) / dist * 0.5;</span></p>
-<p class="p1"><span class="s1">if (!p1.pinned) { p1.x -= dx * diff; p1.y -= dy * diff; }</span></p>
-<p class="p1"><span class="s1">if (!p2.pinned) { p2.x += dx * diff; p2.y += dy * diff; }</span></p>
-<p class="p1"><span class="s1">});</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p3"><span class="s2">}</span></p>
+
+<canvas id="receiptCanvas" width="512" height="1024"></canvas>
+
+<script>
+
+const canvas = document.getElementById("receiptCanvas");
+const ctx = canvas.getContext("2d");
+
+/* --- Receipt Paper Background --- */
+
+ctx.fillStyle = "#fdfdfd";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+/* --- Title --- */
+
+ctx.fillStyle="#111";
+ctx.textAlign="center";
+ctx.font="bold 32px monospace";
+ctx.fillText("THE COST OF BAD L&D",256,80);
+
+
+/* --- Receipt Items --- */
+
+ctx.textAlign="left";
+
+const items = [
+{ name:"Talent Disengaged", cost:"$82,000"},
+{ name:"Skills Not Applied", cost:"$41,000"},
+{ name:"Leadership Stalled", cost:"$36,000"},
+{ name:"Wrong Learners", cost:"$29,000"}
+];
+
+items.forEach((item,i)=>{
+
+let y = 180 + (i*100);
+
+ctx.font="bold 20px monospace";
+ctx.fillText(item.name,40,y);
+
+ctx.textAlign="right";
+ctx.fillText(item.cost,470,y);
+
+ctx.textAlign="left";
+ctx.font="14px monospace";
+ctx.fillText("Investment without impact.",40,y+25);
+
+});
+
+/* --- Total --- */
+
+ctx.font="bold 28px monospace";
+ctx.fillText("TOTAL: $300,000.00",40,850);
+
+</script>
+
 </body>
 </html>
